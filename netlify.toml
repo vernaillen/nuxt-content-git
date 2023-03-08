@@ -1,7 +1,0 @@
-[build.environment]
-  NPM_FLAGS = "--version"
-  NODE_VERSION = "18"
-
-[build]
-  publish = "examples/documentDriven/dist"
-  command = "pnpm prepare && pnpm run build"
