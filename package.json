@@ -1,6 +1,6 @@
 {
   "name": "nuxt-content-git",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "Additional module for @nuxt/content that replaces or adds createdAt and updatedAt dates based on the git history.",
   "keywords": [
     "frontend",
@@ -21,37 +21,39 @@
   "license": "MIT",
   "author": "Sebastian Landwehr <info@sebastianlandwehr.com>",
   "type": "module",
-  "exports": "./dist/index.js",
-  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
+  },
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "checkUnknownFiles": "base checkUnknownFiles",
-    "commit": "base commit",
-    "depcheck": "base depcheck",
-    "dev": "base dev",
-    "lint": "base lint",
-    "prepare": "base prepare",
-    "prepublishOnly": "base prepublishOnly",
-    "test": "base test"
+    "dev": "nuxi dev examples/documentDriven",
+    "build": "nuxi build examples/documentDriven",
+    "prepare": "nuxt-module-build --stub && nuxi prepare examples/documentDriven",
+    "lint": "eslint .",
+    "prepack": "nuxt-module-build",
+    "test": "vitest test"
   },
   "dependencies": {
-    "@dword-design/functions": "^4.0.0",
-    "simple-git": "^3.15.1"
+    "@nuxt/content": "^2.4.3",
+    "@nuxt/kit": "^3.2.3",
+    "simple-git": "^3.17.0"
   },
   "devDependencies": {
-    "@dword-design/base": "^9.2.1",
-    "@dword-design/puppeteer": "^6.0.2",
-    "@dword-design/tester": "^2.0.0",
-    "@dword-design/tester-plugin-puppeteer": "^2.0.0",
-    "@nuxt/content": "^1.14.0",
-    "depcheck-package-name": "^2.0.0",
-    "execa": "^7.0.0",
-    "fs-extra": "^10.0.0",
-    "nuxt": "^2.15.3",
-    "output-files": "^2.0.0",
-    "with-local-tmp-dir": "^4.0.0"
+    "@nuxt/module-builder": "^0.2.1",
+    "@nuxt/schema": "^3.2.3",
+    "@nuxt/ui": "^0.4.1",
+    "@nuxtjs/eslint-config-typescript": "latest",
+    "nuxt": "^3.2.3",
+    "typescript": "^4.9.5",
+    "vitest": "^0.29.2"
   },
   "engines": {
     "node": ">=14"

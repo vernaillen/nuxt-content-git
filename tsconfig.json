@@ -1,0 +1,7 @@
+{
+  "extends": "./examples/documentDriven/.nuxt/tsconfig.json",
+  "exclude": [
+    "test",
+    "node_modules"
+  ]
+}
